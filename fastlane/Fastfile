@@ -1,0 +1,22 @@
+import 'lib/jira.rb'
+import 'lib/slack.rb'
+import 'lib/gitflow.rb'
+import 'lib/CI.rb'
+
+import 'helper/provisioning_profiles_helper.rb'
+import 'helper/match_helper.rb'
+import 'helper/unit_testing_helper.rb'
+import 'helper/display_name_helper.rb'
+import 'helper/build_number_helper.rb'
+import 'helper/changelog_helper.rb'
+
+import "RSBMatch.rb"
+import "RSBUpload.rb"
+import "RSBWorkflow.rb"
+
+before_all do
+  if `gem list -i jira-ruby`.strip == "false"
+    sh('gem install jira-ruby')
+  end
+  require('jira-ruby')
+end
