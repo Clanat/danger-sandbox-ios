@@ -1,0 +1,10 @@
+input_dir: Resources
+output_dir: Resources
+strings:
+  paths: en.lproj/Localizable.strings
+  templateName: structured-swift4
+  output: Strings.swift
+xcassets:
+  paths: Assets.xcassets
+  templateName: swift4
+  output: Assets.swift
