@@ -57,6 +57,19 @@ platform :ios do
     end
   end
 
+  lane :rsb_validate_build do
+    if ENV['BUILD_VALIDATION_DEVICE'].nil?
+      UI.user_error!('You need to configure BUILD environments: BUILD_VALIDATION_DEVICE')
+    else
+      xcodebuild(
+        workspace: ENV['GYM_WORKSPACE'],
+        project: ENV['GYM_PROJECT'],
+        scheme: ENV['GYM_SCHEME'],
+        destination: "platform=iOS Simulator,name=#{ENV['BUILD_VALIDATION_DEVICE']}"
+      )
+    end
+  end
+
   lane :rsb_changelog do |options|
     ready_tickets = rsb_search_jira_tickets(
       statuses: [rsb_jira_status[:ready]]
